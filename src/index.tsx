@@ -2,17 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-
-const defaultContextValue = {
-  username: "jinshuo",
-};
-export const appContext = React.createContext(defaultContextValue);
+import { AppStateProvider } from "./appState";
 
 ReactDOM.render(
   <React.StrictMode>
-    <appContext.Provider value={defaultContextValue}>
+    <AppStateProvider>
       <App />
-    </appContext.Provider>
+    </AppStateProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
