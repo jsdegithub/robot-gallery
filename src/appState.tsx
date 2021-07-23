@@ -21,7 +21,6 @@ export const appSetStateContext =
   );
 export const AppStateProvider: React.FC = (props) => {
   const [state, setState] = useState(defaultContextValue);
-
   return (
     <appContext.Provider value={state}>
       <appSetStateContext.Provider value={setState}>

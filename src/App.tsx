@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import logo from "./assets/images/logo.svg";
 import styles from "./App.module.css";
 import Robot from "./components/Robot";
+import RobotDiscount from "./components/RobotDiscount";
 import ShoppingCart from "./components/ShoppingCart";
-
-interface Props {
-  username: string;
-}
 
 const App: React.FC = () => {
   const [count, setCount] = useState<number>(0);
@@ -52,9 +49,13 @@ const App: React.FC = () => {
       {error && <h2>出错了：{error}</h2>}
       {!loading ? (
         <div className={styles.robotList}>
-          {robotGallery.map((r) => (
-            <Robot id={r.id} name={r.name} email={r.email}></Robot>
-          ))}
+          {robotGallery.map((r, i) =>
+            i % 2 === 0 ? (
+              <Robot id={r.id} name={r.name} email={r.email}></Robot>
+            ) : (
+              <RobotDiscount id={r.id} name={r.name} email={r.email}></RobotDiscount>
+            )
+          )}
         </div>
       ) : (
         <h2>loading...</h2>
